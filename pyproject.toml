@@ -1,8 +1,8 @@
 [tool.poetry]
-name = "ai academy - radars"
-version = "0.1.0"
+name = "colornet"
+version = "0.0.1"
 description = ""
-authors = ["omalinovskyi <orest.malinovskyi@digica.com>"]
+authors = ["Orest Malinovskyi <orest0206@gmail.com>"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
@@ -13,12 +13,13 @@ matplotlib = "^3.5.2"
 tqdm = "^4.64.0"
 fastai = "2.4"
 torch = "1.9.1"
+torchvision = "0.10.1"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.10.0"
 
 [tool.poe.tasks]
-force-cuda11 = "python -m pip install torch==1.9.1 torchvision==0.10.1 torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html"
+force-cuda11 = "python -m pip install torch==1.9.1+cpu torchvision==0.10.1+cpu torchaudio==0.9.1 -f https://download.pytorch.org/whl/torch_stable.html"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
