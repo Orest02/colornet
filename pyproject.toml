@@ -14,6 +14,8 @@ tqdm = "^4.64.0"
 fastai = "2.4"
 torch = "1.9.1"
 torchvision = "0.10.1"
+anypath = "^1.0.0"
+pre-commit = "^2.20.0"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.10.0"
