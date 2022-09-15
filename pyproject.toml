@@ -16,6 +16,7 @@ torch = "1.9.1"
 torchvision = "0.10.1"
 anypath = "^1.0.0"
 pre-commit = "^2.20.0"
+Hydra = "^2.5"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.10.0"

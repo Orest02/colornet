@@ -1,10 +1,9 @@
 import time
 
-import numpy as np
-from skimage.color import rgb2lab, lab2rgb
 import matplotlib.pyplot as plt
-
+import numpy as np
 import torch
+from skimage.color import lab2rgb, rgb2lab
 from torchvision import transforms
 
 

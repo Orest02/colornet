@@ -8,15 +8,15 @@ class CustomFormatter(logging.Formatter):
     2. Overrides 'filename' with the value of 'file_name_override', if it exists.
     """
 
-    def format(self, record):
+    def format(self, record) -> str:
         if hasattr(record, 'func_name_override'):
             record.funcName = record.func_name_override
         if hasattr(record, 'file_name_override'):
             record.filename = record.file_name_override
-        return super(CustomFormatter, self).format(record)
+        return super().format(record)
 
 
-def get_logger(log_file_name, log_sub_dir=""):
+def get_logger(log_file_name, log_sub_dir="") -> logging.Logger:
     """ Creates a Log File and returns Logger object """
 
     windows_log_dir = 'c:\\logs_dir\\'
