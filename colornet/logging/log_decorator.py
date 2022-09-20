@@ -1,6 +1,6 @@
 import sys, os, functools
 from inspect import getframeinfo, stack
-import log
+from .log import get_logger
 
 
 def log_decorator(_func=None):
@@ -8,7 +8,8 @@ def log_decorator(_func=None):
         @functools.wraps(func)
         def log_decorator_wrapper(self, *args, **kwargs):
             # Build logger object
-            logger_obj = log.get_logger(log_file_name=self.log_file_name, log_sub_dir=self.log_file_dir)
+            # logger_obj = get_logger(log_file_name=self.log_file_name, log_sub_dir=self.log_file_dir)
+            logger_obj = self.logger
 
             """ Create a list of the positional arguments passed to function.
             - Using repr() for string representation for each argument. repr() is similar to str() only difference being

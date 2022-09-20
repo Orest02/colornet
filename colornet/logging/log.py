@@ -20,7 +20,7 @@ def get_logger(log_file_name, log_sub_dir="") -> logging.Logger:
     """ Creates a Log File and returns Logger object """
 
     windows_log_dir = 'c:\\logs_dir\\'
-    linux_log_dir = '/logs_dir/'
+    linux_log_dir = 'logs_dir/'
 
     # Build Log file directory, based on the OS and supplied input
     log_dir = windows_log_dir if os.name == 'nt' else linux_log_dir

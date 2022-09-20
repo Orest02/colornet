@@ -38,4 +38,4 @@ class Preprocessing:
 
     @log_decorator.log_decorator()
     def preprocess(self) -> torch.Tensor:
-        return self.transforms(self.image)
+        return self.transforms(self.image).unsqueeze(0)

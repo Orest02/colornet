@@ -7,40 +7,48 @@ import pathlib
 from dataclasses import dataclass
 from typing import Optional, TypeVar, Union
 
-import PIL
 import torch
 from anypath.anypath import AnyPath
-from matplotlib import pyplot as plt
 
 from colornet.logging import log_decorator
-from models import MainModel, build_res_unet
-from torchvision import transforms
-from utils import lab_to_rgb, rgb_to_l
+from .models import MainModel, build_res_unet
 
 
 @dataclass
 class Predict:
     unet_path: str
+    gan_path: str
     device: str
     logger: logging.Logger
 
     @log_decorator.log_decorator()
     def __post_init__(self):
         self.model: Optional[torch.nn.Module] = None
-        self.device: torch.device = torch.device(self.device if getattr(torch, self.device).is_available() else 'cpu')
+        self.device: torch.device = torch.device(
+            self.device if self.device == 'cpu' or getattr(torch, self.device).is_available() else 'cpu')
 
     @log_decorator.log_decorator()
     def init_model(self):
         self.model = build_res_unet(n_input=1, n_output=2, size=256)
 
     @log_decorator.log_decorator()
-    def load_model(self, path_to_unet: Union[AnyPath, str]):
-        self.logger.info(f"Loading model from {path_to_unet}")
-        self.model.load_state_dict(torch.load(path_to_unet, map_location=self.device))
+    def load_model(self):
+        self.logger.info(f"Loading model from {self.unet_path}")
+        self.model.load_state_dict(torch.load(self.unet_path, map_location=self.device))
+
+        self.model = MainModel(net_G=self.model)
+        self.model.load_state_dict(
+            torch.load(
+                self.gan_path,
+                map_location=self.device
+            )
+        )
+
+        self.model.eval()
 
     @log_decorator.log_decorator()
     def forward(self, image: torch.Tensor) -> torch.Tensor:
         with torch.no_grad():
-            output = self.model(image.to(self.device))
+            output = self.model.net_G(image.to(self.device))
 
         return output
