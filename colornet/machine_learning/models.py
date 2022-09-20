@@ -4,7 +4,6 @@ from fastai.vision.models.unet import DynamicUnet
 from torch import nn, optim
 from torchvision.models import resnet18
 
-
 # from loss import GANLoss
 
 
