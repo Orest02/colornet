@@ -1,35 +1,13 @@
 import os
 from typing import Union
 
-import hydra
 from anypath.anypath import AnyPath
-from hydra import initialize, compose
-from hydra.core.hydra_config import HydraConfig
-from hydra.utils import instantiate
-from omegaconf import DictConfig
+from hydra import compose, initialize
 
-from colornet.machine_learning import Postprocessing
+from colornet.hydra.init_runner import instantiate_runner
 from colornet.run_manager.run_manager import MainManager
 
 os.environ["HYDRA_FULL_ERROR"] = "1"
-
-@hydra.main(version_base=None, config_path="configs", config_name="config")
-def instantiate_runner(cfg: DictConfig) -> MainManager:
-    logger = instantiate(cfg.logger)
-    preprocessing = instantiate(cfg.preprocess)
-    inference = instantiate(cfg.inference)
-    postprocessing = Postprocessing(logger)
-
-    runner = MainManager(
-        logger=logger,
-        preprocess=preprocessing,
-        inference=inference,
-        postprocess=postprocessing
-    )
-
-    runner.init_elements()
-
-    return runner
 
 
 def main(runner: MainManager, img_path: Union[AnyPath, str]):

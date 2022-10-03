@@ -1,3 +1,4 @@
+import io
 import logging
 from dataclasses import dataclass
 from typing import Union
@@ -24,7 +25,7 @@ class MainManager:
         self.inference.load_model()
 
     @log_decorator.log_decorator()
-    def run_one_cycle(self, img_path: Union[AnyPath, str]) -> np.ndarray:
+    def run_one_cycle(self, img_path: Union[AnyPath, str, io.BytesIO]) -> np.ndarray:
         self.preprocess.read_img(img_path)
         img_gray = self.preprocess.preprocess()
 
