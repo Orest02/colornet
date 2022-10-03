@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "colornet"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Orest Malinovskyi <orest0206@gmail.com>"]
 
