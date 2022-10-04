@@ -2,8 +2,8 @@ import logging
 from dataclasses import dataclass
 from typing import Tuple, Union
 
-import PIL
 import numpy as np
+import PIL
 import torch
 from anypath.anypath import AnyPath
 from torchvision import transforms

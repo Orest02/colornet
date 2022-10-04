@@ -1,11 +1,11 @@
 [tool.poetry]
 name = "colornet"
-version = "0.1.0"
+version = "0.2.0"
 description = ""
 authors = ["Orest Malinovskyi <orest0206@gmail.com>"]
 
 [tool.poetry.dependencies]
-python = "^3.8"
+python = ">=3.8,<3.9.7 || >3.9.7,<4.0"
 jupyter = "^1.0.0"
 jupyterlab = "^3.4.4"
 scikit-image = "^0.19.3"
@@ -18,6 +18,11 @@ anypath = "^1.0.0"
 pre-commit = "^2.20.0"
 Hydra = "^2.5"
 hydra-core = "^1.2.0"
+fastapi = "^0.85.0"
+uvicorn = "^0.18.3"
+python-multipart = "^0.0.5"
+streamlit = "^1.13.0"
+requests-toolbelt = "^0.9.1"
 
 [tool.poetry.dev-dependencies]
 poethepoet = "^0.10.0"

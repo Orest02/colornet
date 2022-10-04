@@ -1,5 +1,8 @@
-import sys, os, functools
+import functools
+import os
+import sys
 from inspect import getframeinfo, stack
+
 from .log import get_logger
 
 
@@ -15,14 +18,14 @@ def log_decorator(_func=None):
             - Using repr() for string representation for each argument. repr() is similar to str() only difference being
              it prints with a pair of quotes and if we calculate a value we get more precise value than str(). """
             args_passed_in_function = [repr(a) for a in args]
-            """ Create a list of the keyword arguments. The f-string formats each argument as key=value, where the !r 
+            """ Create a list of the keyword arguments. The f-string formats each argument as key=value, where the !r
                 specifier means that repr() is used to represent the value. """
             kwargs_passed_in_function = [f"{k}={v!r}" for k, v in kwargs.items()]
 
             """ The lists of positional and keyword arguments is joined together to form final string """
             formatted_arguments = ", ".join(args_passed_in_function + kwargs_passed_in_function)
 
-            """ Generate file name and function name for calling function. __func.name__ will give the name of the 
+            """ Generate file name and function name for calling function. __func.name__ will give the name of the
                 caller function ie. wrapper_log_info and caller file name ie log-decorator.py
             - In order to get actual function and file name we will use 'extra' parameter.
             - To get the file name we are using in-built module inspect.getframeinfo which returns calling file name """
