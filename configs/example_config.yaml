@@ -14,3 +14,8 @@ inference:
   gan_path: artifacts/GAN_weights.pt
   device: ${device}
   logger: ${logger}
+app:
+  _target_: colornet.frontend.App
+  logger: ${logger}
+  request_url: "http://api:5005/transform"
+  request_timeout: 8000
