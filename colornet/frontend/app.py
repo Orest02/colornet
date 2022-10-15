@@ -1,4 +1,4 @@
-from hydra import initialize, compose
+from hydra import compose, initialize
 from hydra.core.global_hydra import GlobalHydra
 from hydra.utils import instantiate
 
