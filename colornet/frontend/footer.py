@@ -1,9 +1,22 @@
 # SOURCE: https://discuss.streamlit.io/t/st-footer/6447
 
 import streamlit as st
-from htbuilder import HtmlElement, div, ul, li, br, hr, a, p, img, styles, classes, fonts
+from htbuilder import (
+    HtmlElement,
+    a,
+    br,
+    classes,
+    div,
+    fonts,
+    hr,
+    img,
+    li,
+    p,
+    styles,
+    ul,
+)
+from htbuilder.funcs import rgb, rgba
 from htbuilder.units import percent, px
-from htbuilder.funcs import rgba, rgb
 
 
 def image(src_as_string, **style):
@@ -33,25 +46,18 @@ def footer(*args):
         color="black",
         text_align="center",
         height="auto",
-        opacity=1
+        opacity=1,
     )
 
     style_hr = styles(
         display="block",
         margin=px(8, 8, "auto", "auto"),
         border_style="inset",
-        border_width=px(2)
+        border_width=px(2),
     )
 
     body = p()
-    foot = div(
-        style=style_div
-    )(
-        hr(
-            style=style_hr
-        ),
-        body
-    )
+    foot = div(style=style_div)(hr(style=style_hr), body)
 
     st.markdown(style, unsafe_allow_html=True)
 

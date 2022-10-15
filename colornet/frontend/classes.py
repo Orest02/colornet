@@ -5,10 +5,10 @@ from typing import Optional
 
 import requests
 import streamlit as st
-from colornet.frontend.footer import link, footer, image
-from requests_toolbelt import MultipartEncoder
 from htbuilder.units import px
+from requests_toolbelt import MultipartEncoder
 
+from colornet.frontend.footer import footer, image, link
 from colornet.logging import log_decorator
 
 
@@ -22,11 +22,17 @@ class App:
     @log_decorator.log_decorator()
     def request_process(self):
         m = MultipartEncoder(
-            fields={"file": ("filename", self.image, "image/jpeg"), "accept": "application/json"}
+            fields={
+                "file": ("filename", self.image, "image/jpeg"),
+                "accept": "application/json",
+            }
         )
 
         r = requests.put(
-            self.request_url, data=m, headers={"Content-Type": m.content_type}, timeout=self.request_timeout
+            self.request_url,
+            data=m,
+            headers={"Content-Type": m.content_type},
+            timeout=self.request_timeout,
         )
 
         return r
@@ -61,10 +67,14 @@ class App:
     @log_decorator.log_decorator()
     def construct_footer(self):
         args = [
-            image('https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png', width=px(25), height=px(25)),
+            image(
+                "https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png",
+                width=px(25),
+                height=px(25),
+            ),
             "Checkout the ",
             link("https://github.com/Orest02/colornet", "project repo"),
-            "!"
+            "!",
         ]
 
         footer(*args)
