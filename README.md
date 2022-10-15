@@ -19,6 +19,7 @@ GAN trained from this [tutorial](https://github.com/moein-shariatnia/Deep-Learni
 | [![Hydra](https://raw.githubusercontent.com/facebookresearch/hydra/master/website/static/img/Hydra-Readme-logo2.svg)](https://hydra.cc/) |
 |                                                              |
 | [![New Relic](https://scontent.flcj1-1.fna.fbcdn.net/v/t39.30808-6/281769690_10160125860812495_4541212653657046312_n.jpg?_nc_cat=105&ccb=1-7&_nc_sid=09cbfe&_nc_ohc=xSmo5sYSG4gAX-aVGUE&_nc_ht=scontent.flcj1-1.fna&oh=00_AT8ymFe-E6Ow1xEFJJMCPj0AKXvVjuL5YGlHrLyrz3r_wA&oe=634D69AC)](https://newrelic.com/) |
+| [![Docker - Logos Download](https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flogos-download.com%2Fwp-content%2Fuploads%2F2016%2F09%2FDocker_logo_black.png&f=1&nofb=1&ipt=553a378a8e641b2d75576f07260b0d4478630f00a1cc41ede6e0883d5704a147&ipo=images)](https://www.docker.com/) |
 
 
 
