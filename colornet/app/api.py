@@ -3,7 +3,6 @@ from typing import Union
 
 import PIL
 from fastapi import FastAPI, File, Response, UploadFile
-# from fastapi.openapi.models import Response
 from hydra import compose, initialize
 from pydantic import BaseModel
 

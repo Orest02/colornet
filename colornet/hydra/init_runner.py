@@ -17,7 +17,7 @@ def instantiate_runner(cfg: DictConfig) -> MainManager:
         logger=logger,
         preprocess=preprocessing,
         inference=inference,
-        postprocess=postprocessing
+        postprocess=postprocessing,
     )
 
     runner.init_elements()

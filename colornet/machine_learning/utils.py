@@ -12,7 +12,7 @@ class AverageMeter:
         self.reset()
 
     def reset(self):
-        self.count, self.avg, self.sum = [0.] * 3
+        self.count, self.avg, self.sum = [0.0] * 3
 
     def update(self, val, count=1):
         self.count += count
@@ -28,12 +28,14 @@ def create_loss_meters():
     loss_G_L1 = AverageMeter()
     loss_G = AverageMeter()
 
-    return {'loss_D_fake': loss_D_fake,
-            'loss_D_real': loss_D_real,
-            'loss_D': loss_D,
-            'loss_G_GAN': loss_G_GAN,
-            'loss_G_L1': loss_G_L1,
-            'loss_G': loss_G}
+    return {
+        "loss_D_fake": loss_D_fake,
+        "loss_D_real": loss_D_real,
+        "loss_D": loss_D,
+        "loss_G_GAN": loss_G_GAN,
+        "loss_G_L1": loss_G_L1,
+        "loss_G": loss_G,
+    }
 
 
 def update_losses(model, loss_meter_dict, count):
@@ -47,8 +49,8 @@ def lab_to_rgb(L, ab):
     Takes a batch of images
     """
 
-    L = (L + 1.) * 50.
-    ab = ab * 110.
+    L = (L + 1.0) * 50.0
+    ab = ab * 110.0
     Lab = torch.cat([L, ab], dim=1).permute(0, 2, 3, 1).cpu().numpy()
     rgb_imgs = []
     for img in Lab:
@@ -82,7 +84,7 @@ def visualize(model, data, save=True):
     fig = plt.figure(figsize=(15, 8))
     for i in range(5):
         ax = plt.subplot(3, 5, i + 1)
-        ax.imshow(L[i][0].cpu(), cmap='gray')
+        ax.imshow(L[i][0].cpu(), cmap="gray")
         ax.axis("off")
         ax = plt.subplot(3, 5, i + 1 + 5)
         ax.imshow(fake_imgs[i])

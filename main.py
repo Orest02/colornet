@@ -17,7 +17,7 @@ def main(runner: MainManager, img_path: Union[AnyPath, str]):
 
 
 # Press the green button in the gutter to run the script.
-if __name__ == '__main__':
+if __name__ == "__main__":
     img_path = "input/3895858.jpg"
 
     initialize(version_base=None, config_path="configs")

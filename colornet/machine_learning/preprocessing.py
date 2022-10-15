@@ -25,8 +25,9 @@ class Preprocessing:
                 transforms.Lambda(lambda image: PIL.ImageOps.grayscale(image)),
                 transforms.Resize(tuple(self.img_size), PIL.Image.BICUBIC),
                 transforms.ToTensor(),
-                transforms.Lambda(lambda x: x * 2. - 1.)
-            ])
+                transforms.Lambda(lambda x: x * 2.0 - 1.0),
+            ]
+        )
 
     @log_decorator.log_decorator()
     def read_img(self, img_path: Union[AnyPath, str]) -> None:
@@ -34,7 +35,9 @@ class Preprocessing:
         self.image = PIL.Image.open(img_path)
 
         np_img = np.asarray(self.image)
-        self.logger.info(f"Successfully read the image. Its size is {self.image.size} and extrema are {np_img.min()}:{np_img.max()}")
+        self.logger.info(
+            f"Successfully read the image. Its size is {self.image.size} and extrema are {np_img.min()}:{np_img.max()}"
+        )
 
     @log_decorator.log_decorator()
     def preprocess(self) -> torch.Tensor:
