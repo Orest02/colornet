@@ -26,7 +26,10 @@ class Predict:
     def __post_init__(self):
         self.model: Optional[torch.nn.Module] = None
         self.device: torch.device = torch.device(
-            self.device if self.device == 'cpu' or getattr(torch, self.device).is_available() else 'cpu')
+            self.device
+            if self.device == "cpu" or getattr(torch, self.device).is_available()
+            else "cpu"
+        )
 
     @log_decorator.log_decorator()
     def init_model(self):
@@ -38,12 +41,7 @@ class Predict:
         self.model.load_state_dict(torch.load(self.unet_path, map_location=self.device))
 
         self.model = MainModel(net_G=self.model)
-        self.model.load_state_dict(
-            torch.load(
-                self.gan_path,
-                map_location=self.device
-            )
-        )
+        self.model.load_state_dict(torch.load(self.gan_path, map_location=self.device))
 
         self.model.eval()
 

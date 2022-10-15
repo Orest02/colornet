@@ -1,0 +1,16 @@
+model_name: baseline
+device: 'cpu'
+logger:
+  _target_: colornet.logging.get_logger
+  log_file_name: logs.txt
+  log_sub_dir: ""
+preprocess:
+  _target_: colornet.machine_learning.Preprocessing
+  img_size: [255, 255]
+  logger: ${logger}
+inference:
+  _target_: colornet.machine_learning.Predict
+  unet_path: artifacts/res18net.pt
+  gan_path: artifacts/GAN_weights.pt
+  device: ${device}
+  logger: ${logger}
