@@ -24,7 +24,7 @@ services:
     environment:
       NEW_RELIC_CONFIG_FILE: newrelic/newrelic.ini
       NEW_RELIC_APP_NAME: colornet-frontend-logs
-    command: poetry run streamlit run colornet/frontend/app.py --server.port 80
+    command: poetry run streamlit run colornet/frontend/app.py --server.port 80 --server.address=127.0.0.1
     ports:
       - 80:80
     networks:
