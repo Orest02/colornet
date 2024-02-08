@@ -83,7 +83,7 @@ class App:
     def run(self):
         st.title("Photo colorization app")
 
-        self.image = st.file_uploader("Upload an image")
+        self.image = st.file_uploader("Upload a black and white image to colorize it!\n\nThe app was created for entertainment purposes. A U-net architecture was used, which may not be the most accurate model at this moment")
 
         try:
             self.build_table_with_io_images()
