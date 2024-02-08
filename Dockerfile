@@ -19,6 +19,9 @@ RUN ls -a
 RUN poetry config virtualenvs.create false \
     && poetry install --only main --no-interaction --no-ansi
 
+
+RUN pip install urllib3==1.26.6
+
 COPY ./ ./
 
 EXPOSE 80
