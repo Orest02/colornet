@@ -67,11 +67,10 @@ Installation
 
 ### Harder way: run from Terminal
 
-Install Poetry, then run:
+In python 3.8/3.9 envirenment, install Poetry, then run:
 
 ``` {.commandline}
 poetry install
-poe force-cuda11 # run this if you encounter quantization errors
 ```
 
 Run:
